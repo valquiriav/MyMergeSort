@@ -2,9 +2,9 @@ package br.com.letscode;
 
 public class MergeSort {
 
-    int[] arrayOriginal;
+    ArrayList arrayOriginal;
 
-    public MergeSort(int[] arrayOriginal) {
+    public MergeSort(ArrayList arrayOriginal) {
         this.arrayOriginal = arrayOriginal;
     }
 
@@ -12,35 +12,38 @@ public class MergeSort {
         separarArrays(arrayOriginal);
     }
 
-    public int definirM(int[] arrayOriginal) {
+    public int definirM(ArrayList arrayOriginal) {
         //verifica se o número de elementos é par e define o elemento a ser usado de referência
-        if (arrayOriginal.length % 2 == 0) {
-            return arrayOriginal.length / 2;
+        if (arrayOriginal.getSize() % 2 == 0) {
+            return arrayOriginal.getSize() / 2;
         } else {
-            return arrayOriginal.length / 2 + 1;
+            return arrayOriginal.getSize() / 2 + 1;
         }
     }
 
     //método para criar duas arrays separando a original
 
-    public void separarArrays(int[] arrayOriginal) {
+    public void separarArrays(ArrayList arrayOriginal) {
 
-        if (arrayOriginal.length > 1){
+        if (arrayOriginal.getSize() > 1){
             int m = definirM(arrayOriginal);
 
-            int[] primeiraMetade = new int[m];
-            int[] segundaMetade = new int[arrayOriginal.length - m];
+            ArrayList primeiraMetade = new ArrayList();
+            ArrayList segundaMetade = new ArrayList();
 
-            if (m + 1 >= 0) System.arraycopy(arrayOriginal, 0, primeiraMetade, 0, m + 1);
+            for (int j = m + 1; j < arrayOriginal.getSize(); j++) {
+                segundaMetade.set(j, arrayOriginal.get(j));
+            }
 
-            if (primeiraMetade.length > 1) {
+            if (primeiraMetade.getSize() > 1) {
                 separarArrays(primeiraMetade);
             }
 
-            if (arrayOriginal.length - (m + 1) >= 0)
-                System.arraycopy(arrayOriginal, m + 1, segundaMetade, m + 1, arrayOriginal.length - (m + 1));
+            for (int j = m + 1; j < arrayOriginal.getSize(); j++) {
+                segundaMetade.set(j, arrayOriginal.get(j));
+            }
 
-            if (segundaMetade.length > 1) {
+            if (segundaMetade.getSize() > 1) {
                 separarArrays(segundaMetade);
             }
 
@@ -49,23 +52,23 @@ public class MergeSort {
     }
 
     //método para ordenar e unir as arrays que foram separadas
-    public void ordenarArrays(int[] primeiraMetade, int[] segundaMetade) {
-        if (primeiraMetade[0] < segundaMetade[0]) {
+    public void ordenarArrays(ArrayList primeiraMetade, ArrayList segundaMetade) {
+        if (primeiraMetade.get(0).equals(segundaMetade.get(0))) {
 
-            for (int i = 0; i <= primeiraMetade.length; i++) {
-                arrayOriginal[i] = primeiraMetade[0];
+            for (int i = 0; i <= primeiraMetade.getSize(); i++) {
+                arrayOriginal.set(0, primeiraMetade.get(0));
             }
 
-            for (int j = 0; j < segundaMetade.length; j++) {
-                arrayOriginal[primeiraMetade.length + 1 + j] = segundaMetade.length + j;
+            for (int j = 0; j < segundaMetade.getSize(); j++) {
+                arrayOriginal.set(primeiraMetade.getSize() + 1 + j, segundaMetade.getSize() + j);
             }
         } else {
-            for (int i = 0; i <= segundaMetade.length; i++) {
-                arrayOriginal[i] = segundaMetade[0];
+            for (int i = 0; i <= segundaMetade.getSize(); i++) {
+                arrayOriginal.set(i, segundaMetade.get(0));
             }
 
-            for (int j = 0; j < primeiraMetade.length; j++) {
-                arrayOriginal[segundaMetade.length + 1 + j] = primeiraMetade.length + j;
+            for (int j = 0; j < primeiraMetade.getSize(); j++) {
+                arrayOriginal.set(segundaMetade.getSize() + 1 + j, primeiraMetade.getSize() + j);
             }
         }
     }

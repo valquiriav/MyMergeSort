@@ -3,8 +3,23 @@ package br.com.letscode;
 public class Test {
 
     public static void main(String[] args) {
-        int[] myArray = {3, 1, 9, 12, 2, 32, 5, 6, 104, 53};
-        MergeSort test = new MergeSort(myArray);
-        test.mSort();
+        ArrayList myArray = new ArrayList();
+
+        myArray.add(10);
+        myArray.add(5);
+        myArray.add(149);
+        myArray.add(74);
+        myArray.add(13);
+        myArray.add(32);
+        myArray.add(104);
+        myArray.add(16);
+        myArray.add(11);
+        myArray.add(310);
+        myArray.add(12);
+
+        myArray.print();
+
+        //MergeSort test = new MergeSort(myArray);
+        //test.mSort();
     }
 }
