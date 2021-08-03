@@ -17,8 +17,6 @@ public class Test {
         myArray.add(56);
         myArray.add(20);
 
-        System.out.println(myArray.get(9));
-
         MergeSort test = new MergeSort(myArray);
         test.mSort();
     }

@@ -10,6 +10,7 @@ public class MergeSort {
 
     public void mSort(){
         separarArrays(arrayOriginal);
+        arrayOriginal.print();
     }
 
     public int definirM(ArrayList arrayOriginal) {
@@ -28,19 +29,19 @@ public class MergeSort {
         if (arrayOriginal.getSize() > 1){
             int m = definirM(arrayOriginal);
 
-            ArrayList primeiraMetade = new ArrayList();
-            ArrayList segundaMetade = new ArrayList();
+            ArrayList primeiraMetade = new ArrayList(m);
+            ArrayList segundaMetade = new ArrayList(m);
 
-            for (int j = m + 1; j < arrayOriginal.getSize(); j++) {
-                segundaMetade.set(j, arrayOriginal.get(j));
+            for (int i = 0; i < m; i++) {
+                primeiraMetade.set(i, arrayOriginal.get(i));
+            }
+
+            for (int j = 0; j < arrayOriginal.getSize() - m; j++) {
+                segundaMetade.set(j, arrayOriginal.get(m + j));
             }
 
             if (primeiraMetade.getSize() > 1) {
                 separarArrays(primeiraMetade);
-            }
-
-            for (int j = m + 1; j < arrayOriginal.getSize(); j++) {
-                segundaMetade.set(j, arrayOriginal.get(j));
             }
 
             if (segundaMetade.getSize() > 1) {
@@ -53,7 +54,7 @@ public class MergeSort {
 
     //método para ordenar e unir as arrays que foram separadas
     public void ordenarArrays(ArrayList primeiraMetade, ArrayList segundaMetade) {
-        if (primeiraMetade.get(0).equals(segundaMetade.get(0))) {
+        if ((int) primeiraMetade.get(0) < (int) segundaMetade.get(0)) {
 
             for (int i = 0; i <= primeiraMetade.getSize(); i++) {
                 arrayOriginal.set(0, primeiraMetade.get(0));

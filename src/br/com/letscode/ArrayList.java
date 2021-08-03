@@ -34,7 +34,7 @@ public class ArrayList {
         return myArray[index];
     }
 
-    public void set(int index, Object value){
+    public void set(int index, Object value) {
         myArray[index] = value;
     }
 
@@ -52,8 +52,11 @@ public class ArrayList {
 
     public void remove(int index){
         Object[] tempArray = new Object[myArray.length];
-        for (int i = 0; i <= myArray.length; i++){
+        for (int i = 0; i < index; i++){
             tempArray[i] = myArray[i];
+        }
+        for (int j = index + 1; j < myArray.length; j++){
+            tempArray[j - 1] = myArray[j];
         }
         myArray = tempArray;
     }
