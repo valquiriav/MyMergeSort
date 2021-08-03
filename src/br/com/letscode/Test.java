@@ -14,12 +14,12 @@ public class Test {
         myArray.add(104);
         myArray.add(16);
         myArray.add(11);
-        myArray.add(310);
-        myArray.add(12);
+        myArray.add(56);
+        myArray.add(20);
 
-        myArray.print();
+        System.out.println(myArray.get(9));
 
-        //MergeSort test = new MergeSort(myArray);
-        //test.mSort();
+        MergeSort test = new MergeSort(myArray);
+        test.mSort();
     }
 }
