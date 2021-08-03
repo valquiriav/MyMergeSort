@@ -3,6 +3,8 @@ package br.com.letscode;
 public class MergeSort {
 
     ArrayList arrayOriginal;
+    ArrayList primeiraMetade;
+    ArrayList segundaMetade;
 
     public MergeSort(ArrayList arrayOriginal) {
         this.arrayOriginal = arrayOriginal;
@@ -15,29 +17,28 @@ public class MergeSort {
         arrayOriginal.print();
     }
 
-    public int definirM(ArrayList arrayOriginal) {
-        //verifica se o número de elementos é par e define o elemento a ser usado de referência
+    public void separarArrays(ArrayList arrayOriginal) {
+        //verifica se o número de elementos é par e define o elemento a ser usado de referência, bem como as arrays
         if (arrayOriginal.getSize() % 2 == 0) {
-            return arrayOriginal.getSize() / 2;
+            int m = arrayOriginal.getSize() / 2;
+            primeiraMetade = new ArrayList(m);
+            segundaMetade = new ArrayList(m);
+            copiarArrays(m);
         } else {
-            return arrayOriginal.getSize() / 2 + 1;
+            int m = (arrayOriginal.getSize() / 2) + 1;
+            primeiraMetade = new ArrayList(m);
+            segundaMetade = new ArrayList(arrayOriginal.getSize() - 1);
+            copiarArrays(m);
         }
     }
 
-    //método para criar duas arrays separando a original
-
-    public void separarArrays(ArrayList arrayOriginal) {
-
-            int m = definirM(arrayOriginal);
-
-            ArrayList primeiraMetade = new ArrayList(m);
-            ArrayList segundaMetade = new ArrayList(m);
+    public void copiarArrays(int m) {
 
             for (int i = 0; i < m; i++) {
                 primeiraMetade.set(i, arrayOriginal.get(i));
             }
 
-            for (int j = 0; j < arrayOriginal.getSize() - m; j++) {
+            for (int j = 0; j < segundaMetade.getSize() - m; j++) {
                 segundaMetade.set(j, arrayOriginal.get(m + j));
             }
 
