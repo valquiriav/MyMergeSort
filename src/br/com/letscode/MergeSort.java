@@ -9,7 +9,9 @@ public class MergeSort {
     }
 
     public void mSort(){
-        separarArrays(arrayOriginal);
+        if (arrayOriginal.getSize() > 1) {
+            separarArrays(arrayOriginal);
+        }
         arrayOriginal.print();
     }
 
@@ -26,7 +28,6 @@ public class MergeSort {
 
     public void separarArrays(ArrayList arrayOriginal) {
 
-        if (arrayOriginal.getSize() > 1){
             int m = definirM(arrayOriginal);
 
             ArrayList primeiraMetade = new ArrayList(m);
@@ -47,9 +48,7 @@ public class MergeSort {
             if (segundaMetade.getSize() > 1) {
                 separarArrays(segundaMetade);
             }
-
             ordenarArrays(primeiraMetade, segundaMetade);
-        }
     }
 
     //método para ordenar e unir as arrays que foram separadas
