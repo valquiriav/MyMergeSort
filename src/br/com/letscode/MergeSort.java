@@ -18,21 +18,8 @@ public class MergeSort {
     }
 
     public void separarArrays(ArrayList arrayOriginal) {
-        //verifica se o número de elementos é par e define o elemento a ser usado de referência, bem como as arrays
-        if (arrayOriginal.getSize() % 2 == 0) {
-            int m = arrayOriginal.getSize() / 2;
-            primeiraMetade = new ArrayList(m);
-            segundaMetade = new ArrayList(m);
-            copiarArrays(m);
-        } else {
-            int m = (arrayOriginal.getSize() / 2) + 1;
-            primeiraMetade = new ArrayList(m);
-            segundaMetade = new ArrayList(arrayOriginal.getSize() - 1);
-            copiarArrays(m);
-        }
-    }
 
-    public void copiarArrays(int m) {
+        int m = arrayOriginal.getSize() / 2;
 
             for (int i = 0; i < m; i++) {
                 primeiraMetade.set(i, arrayOriginal.get(i));
